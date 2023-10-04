@@ -1,0 +1,12 @@
+create function dbo.ejercicio3 ()
+
+RETURNS TABLE
+AS 
+RETURN
+(
+SELECT codigo, razonsocial  
+from ma.persona 
+)
+go
+
+select * from dbo.ejercicio3 ()
