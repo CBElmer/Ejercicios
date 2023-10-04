@@ -1,0 +1,23 @@
+  CREATE FUNCTION dbo.ejercicio5(@nombrelinea varchar(50))
+RETURNS @tabla TABLE
+(
+    codigoAuxiliar varchar(200),
+	descripcionItem varchar(200),
+	nombreLineas varchar(200)
+)
+AS
+BEGIN
+    -- Lógica de la función
+    INSERT INTO @tabla
+    SELECT codigoAuxiliar,descripcionItem,nombreLineas
+	FROM ma.item i INNER JOIN
+	ma.itemLineas il on i.item = il.itemLineas
+	INNER JOIN
+	ma.lineas l on il.lineas=l.lineas
+	WHERE nombreLineas like '%'+@nombrelinea+'%'
+    -- Más operaciones si es necesario
+
+    RETURN
+END
+go
+select * from dbo.ejercicio5('Alta')
