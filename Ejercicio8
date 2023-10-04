@@ -1,0 +1,20 @@
+CREATE FUNCTION dbo.ejercicio8 
+(@num1 decimal (18,5), @num2 decimal(18,5), @ope varchar(1))
+RETURNS decimal(18,5)
+AS
+BEGIN
+    DECLARE @resultado decimal(18,5);
+
+    SET @resultado = 
+        CASE 
+            WHEN @ope = '+' THEN @num1 + @num2
+            WHEN @ope = '-' THEN @num1 - @num2
+            WHEN @ope = '*' THEN @num1 * @num2
+            WHEN @ope = '/' THEN @num1 / @num2
+            ELSE NULL
+        END
+
+    RETURN @resultado;
+END;
+GO
+select dbo.ejercicio8 (42,2,'/')
