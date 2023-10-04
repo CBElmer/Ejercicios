@@ -1,0 +1,20 @@
+CREATE FUNCTION dbo.ejercicio6
+	(
+	@anio int,
+	@mes int
+	)
+	RETURNS TABLE
+	AS 
+	RETURN
+	(
+		SELECT v.nombreVendedor, COUNT(d.documento) as Nro_doc
+		from ve.documento d
+		INNER JOIN ma.vendedor v on d.vendedor=v.vendedor
+		WHERE YEAR(d.fechaMovimiento) = @anio 
+		AND	MONTH(d.fechaMovimiento) = @mes
+		GROUP BY v.nombreVendedor
+		)
+		go
+		;
+
+		select * from dbo.ejercicio6(2007,05)
