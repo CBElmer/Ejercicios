@@ -1,0 +1,16 @@
+CREATE FUNCTION dbo.ejercicio4(@nombrelinea varchar(50))
+RETURNS TABLE
+AS
+RETURN
+(
+SELECT codigoAuxiliar,descripcionItem,nombreLineas
+FROM ma.item i INNER JOIN
+	ma.itemLineas il on i.item = il.itemLineas
+	INNER JOIN
+	ma.lineas l on il.lineas=l.lineas
+	WHERE nombreLineas like '%'+@nombrelinea+'%'
+	)
+	go
+	;
+	
+select * from dbo.ejercicio4('Alta')
