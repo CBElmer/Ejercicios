@@ -1,0 +1,31 @@
+CREATE FUNCTION dbo.ejercicio1 (@num1 decimal (18,5),@num2 decimal(18,5),
+@ope varchar(1)
+)
+
+RETURNS decimal(18,5)
+AS
+BEGIN
+    -- Cuerpo de la función
+    DECLARE @resultado decimal(18,5);
+	if(@ope='+')
+	begin
+		set @resultado = (@num1 + @num2)
+	end
+	else if (@ope='-')
+	begin
+		set @resultado=(@num1 - @num2)
+	end
+	else if (@ope='*')
+	begin
+		set @resultado=(@num1 * @num2)
+	end
+	else if (@ope='/')
+	begin
+		set @resultado=(@num1 / @num2)
+	end
+
+    RETURN @resultado;
+END;
+go
+
+select dbo.ejercicio1 (15,2,'*')
