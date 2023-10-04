@@ -1,0 +1,12 @@
+CREATE FUNCTION dbo.ejercicio2(@num int)
+RETURNS varchar(15)
+AS
+BEGIN
+DECLARE @resultado varchar(15)
+SET @resultado = choose(@num,'Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo')
+
+	RETURN @resultado
+END
+GO
+	
+select dbo.ejercicio2(2)
