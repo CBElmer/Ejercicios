@@ -1,0 +1,14 @@
+CREATE FUNCTION dbo.ejercicio7 
+	(
+	@numero int
+	)
+	RETURNS decimal(10,2)
+	AS
+	BEGIN
+	 DECLARE @resultado decimal(10,2);
+	 SET @resultado= @numero * 1.30
+	 RETURN @resultado;
+	 END;
+	 go
+	
+	select dbo.ejercicio7(100)
